@@ -3,8 +3,12 @@ package br.com.heiderlopes.pingpongx
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Html
+import android.text.Html.FROM_HTML_MODE_LEGACY
+import android.text.Spanned
 import android.util.Log
 import br.com.heiderlopes.pingpongx.databinding.ActivityPlayerBinding
+import br.com.heiderlopes.pingpongx.extensions.fromHtml
 import br.com.heiderlopes.pingpongx.model.LastGame
 
 
@@ -49,7 +53,19 @@ class PlayerActivity : AppCompatActivity() {
             //binding.tvLastGame.text = "$player1Name $player1Score - $player2Score $player2Name"
 
             val lastGame = data?.getParcelableExtra<LastGame>("LAST_GAME")
-            binding.tvLastGame.text = "${lastGame?.player1Name} ${lastGame?.player1Score} - ${lastGame?.player2Score} ${lastGame?.player2Name}"
+            //binding.tvLastGame.text = "${lastGame?.player1Name} ${lastGame?.player1Score} - ${lastGame?.player2Score} ${lastGame?.player2Name}"
+            //binding.tvLastGame.text = getString(R.string.teste)
+
+            binding.tvLastGame.fromHtml(
+                getString(
+                    R.string.score,
+                    lastGame?.player1Name,
+                    lastGame?.player1Score,
+                    lastGame?.player2Score,
+                    lastGame?.player2Name
+                )
+            )
+
         }
     }
 

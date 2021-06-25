@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Ping Pong X</string>
+    <string name="score">%1$s &lt;b>%2$d&lt;/b> - &lt;b>%3$d&lt;/b> %4$s </string>
 </resources>
